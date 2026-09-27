@@ -1,0 +1,701 @@
+:root {
+    --lite-smtp-bg: #F8FAFC;
+    --lite-smtp-sidebar: #0F172A;
+    --lite-smtp-accent: #A1FA4C;
+    --lite-smtp-text-main: #1E293B;
+    --lite-smtp-text-muted: #64748B;
+    --lite-smtp-border: #E2E8F0;
+    --lite-smtp-white: #FFFFFF;
+    --lite-smtp-success: #22C55E;
+    --lite-smtp-error: #EF4444;
+}
+
+/* Fallback styles for older browsers */
+.lite-smtp-settings-wrap {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    background: #F8FAFC; /* Fallback for var(--lite-smtp-bg) */
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Sidebar */
+.lite-smtp-sidebar {
+    width: 260px !important;
+    background: #0F172A !important; /* Fallback for var(--lite-smtp-sidebar) */
+    color: #FFFFFF !important;
+    padding: 32px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.lite-smtp-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.lite-smtp-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--lite-smtp-accent);
+    color: var(--lite-smtp-sidebar);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.lite-smtp-logo-text {
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+}
+
+.lite-smtp-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lite-smtp-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.lite-smtp-nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--lite-smtp-white);
+}
+
+.lite-smtp-nav-item.active {
+    background: rgba(161, 250, 76, 0.1);
+    color: var(--lite-smtp-accent);
+}
+
+/* Main Content */
+.lite-smtp-main {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.lite-smtp-section {
+    display: none;
+}
+
+.lite-smtp-section.active {
+    display: block;
+}
+
+.lite-smtp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+.lite-smtp-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--lite-smtp-sidebar);
+    letter-spacing: -0.02em;
+}
+
+.lite-smtp-header p {
+    margin: 8px 0 0;
+    color: var(--lite-smtp-text-muted);
+    font-size: 15px;
+}
+
+.lite-smtp-overall-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.lite-smtp-overall-status.active {
+    background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%);
+    color: #166534;
+    border: 2px solid #22C55E;
+}
+
+.lite-smtp-overall-status.inactive {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    color: #92400E;
+    border: 2px solid #F59E0B;
+}
+
+.lite-smtp-status-light {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.lite-smtp-overall-status.active .lite-smtp-status-light {
+    background: #22C55E;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+.lite-smtp-overall-status.inactive .lite-smtp-status-light {
+    background: #EF4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+}
+
+/* Notice Card */
+.lite-smtp-notice-card {
+    background: var(--lite-smtp-sidebar);
+    color: var(--lite-smtp-white);
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid var(--lite-smtp-accent);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.lite-smtp-notice-content h4 {
+    margin: 0;
+    color: var(--lite-smtp-accent);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.lite-smtp-notice-content p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #94A3B8;
+}
+
+.lite-smtp-badge {
+    background: #FDE68A;
+    color: #92400E;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Grid Layout */
+.lite-smtp-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+}
+
+.lite-smtp-card {
+    background: var(--lite-smtp-white);
+    border: 1px solid var(--lite-smtp-border);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.lite-smtp-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--lite-smtp-sidebar);
+}
+
+.lite-smtp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.lite-smtp-stat-item {
+    background: #F8FAFC;
+    border: 1px solid var(--lite-smtp-border);
+    border-radius: 18px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lite-smtp-stat-number {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--lite-smtp-sidebar);
+}
+
+.lite-smtp-stat-label {
+    font-size: 13px;
+    color: var(--lite-smtp-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.lite-smtp-logs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.lite-smtp-log-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.lite-smtp-logs-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.lite-smtp-btn-small {
+    width: auto;
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+/* Tabs */
+.lite-smtp-tabs {
+    display: flex;
+    background: #F1F5F9;
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+}
+
+.lite-smtp-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    color: var(--lite-smtp-text-muted);
+}
+
+.lite-smtp-tab.active {
+    background: var(--lite-smtp-white);
+    color: var(--lite-smtp-sidebar);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.lite-smtp-tab-content {
+    display: none;
+}
+
+.lite-smtp-tab-content.active {
+    display: block;
+}
+
+/* Form Elements */
+.lite-smtp-form-group {
+    margin-bottom: 20px;
+}
+
+.lite-smtp-form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--lite-smtp-text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.lite-smtp-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--lite-smtp-border);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--lite-smtp-text-main);
+    background: #F8FAFC;
+    transition: border-color 0.2s ease;
+}
+
+.lite-smtp-input:focus {
+    border-color: var(--lite-smtp-accent);
+    outline: none;
+}
+
+.lite-smtp-key-display {
+    background: #F1F5F9;
+    border: 1px dashed var(--lite-smtp-border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--lite-smtp-text-main);
+}
+
+.lite-smtp-link {
+    color: #2563EB;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lite-smtp-link:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.lite-smtp-btn-primary {
+    background: var(--lite-smtp-accent);
+    color: var(--lite-smtp-sidebar);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.lite-smtp-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(161, 250, 76, 0.3);
+}
+
+.lite-smtp-btn-secondary {
+    background: #F1F5F9;
+    color: var(--lite-smtp-text-main);
+    border: 1px solid var(--lite-smtp-border);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s ease;
+}
+
+.lite-smtp-btn-secondary:hover {
+    background: #E2E8F0;
+}
+
+/* Stats */
+.lite-smtp-stats-card {
+    background: #F8FAFC;
+    border: 2px dashed var(--lite-smtp-border);
+}
+
+.lite-smtp-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.lite-smtp-stat-label {
+    font-size: 14px;
+    color: var(--lite-smtp-text-muted);
+}
+
+.lite-smtp-stat-value {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--lite-smtp-sidebar);
+}
+
+.lite-smtp-stat-value.success {
+    color: var(--lite-smtp-success);
+}
+
+/* Status Pill */
+.lite-smtp-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.lite-smtp-status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--lite-smtp-success);
+    border-radius: 50%;
+/* Authentication Status */
+.lite-smtp-auth-status {
+    position: relative;
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.lite-smtp-auth-status.authenticated {
+    background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%);
+    border-color: #22C55E;
+    color: #166534;
+}
+
+.lite-smtp-auth-status.not-authenticated {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-color: #F59E0B;
+    color: #92400E;
+}
+
+.lite-smtp-auth-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: auth-glow 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.lite-smtp-auth-status.authenticated .lite-smtp-auth-glow {
+    background: linear-gradient(45deg, transparent 30%, rgba(34, 197, 94, 0.2) 50%, transparent 70%);
+}
+
+.lite-smtp-auth-status.not-authenticated .lite-smtp-auth-glow {
+    background: linear-gradient(45deg, transparent 30%, rgba(245, 158, 11, 0.2) 50%, transparent 70%);
+}
+
+@keyframes auth-glow {
+    0%, 100% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+}
+
+.lite-smtp-auth-content strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.lite-smtp-auth-content p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Authentication Status Pill */
+.lite-smtp-auth-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.lite-smtp-auth-pill.authenticated {
+    background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%);
+    border-color: #22C55E;
+    color: #166534;
+}
+
+.lite-smtp-auth-pill.not-authenticated {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-color: #F59E0B;
+    color: #92400E;
+}
+
+.lite-smtp-auth-pill .lite-smtp-auth-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: auth-glow 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.lite-smtp-auth-pill.authenticated .lite-smtp-auth-glow {
+    background: linear-gradient(45deg, transparent 30%, rgba(34, 197, 94, 0.2) 50%, transparent 70%);
+}
+
+.lite-smtp-auth-pill.not-authenticated .lite-smtp-auth-glow {
+    background: linear-gradient(45deg, transparent 30%, rgba(245, 158, 11, 0.2) 50%, transparent 70%);
+}
+
+@media (max-width: 1024px) {
+    .lite-smtp-settings-wrap {
+        flex-direction: column;
+    }
+    .lite-smtp-sidebar {
+        width: 100%;
+        padding: 24px;
+    }
+    .lite-smtp-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Admin Notice Styles */
+.lite-smtp-notice-box {
+    background: #131519 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-left: 4px solid #A1FA4C !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+    margin: 20px 0 !important;
+    padding: 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.lite-smtp-notice-box.lite-smtp-review-notice {
+    border-left-color: #A1FA4C !important;
+}
+
+.lite-smtp-notice-box.lite-smtp-donate-notice {
+    border-left-color: #f59e0b !important;
+}
+
+.lite-smtp-notice-header {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    align-items: flex-start !important;
+}
+
+.lite-smtp-notice-title strong {
+    display: block !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+}
+
+.lite-smtp-notice-title p {
+    color: #e0e0e0 !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+}
+
+.lite-smtp-notice-close {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #8e9299;
+    border-radius: 8px;
+    padding: 6px;
+    cursor: pointer;
+    line-height: 0;
+    transition: all 0.2s ease;
+}
+
+.lite-smtp-notice-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.lite-smtp-notice-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+}
+
+.lite-smtp-notice-btn,
+.lite-smtp-notice-actions .button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 36px !important;
+    padding: 0 20px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    transition: opacity 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.lite-smtp-notice-actions .button-primary,
+.lite-smtp-notice-btn.button-primary {
+    background: #A1FA4C !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(161, 250, 76, 0.4) !important;
+}
+
+.lite-smtp-notice-actions .button-primary:hover,
+.lite-smtp-notice-btn.button-primary:hover {
+    box-shadow: 0 6px 20px rgba(161, 250, 76, 0.6) !important;
+}
+
+.lite-smtp-notice-actions .button:not(.button-primary),
+.lite-smtp-notice-btn:not(.button-primary) {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.lite-smtp-notice-btn.button-primary:hover,
+.lite-smtp-notice-actions .button-primary:hover {
+    box-shadow: 0 6px 20px rgba(161, 250, 76, 0.6) !important;
+}
+
+.lite-smtp-notice-btn:not(.button-primary):hover,
+.lite-smtp-notice-actions .button:not(.button-primary):hover {
+    opacity: 0.9;
+}
