@@ -4,9 +4,12 @@ on:
   push:
     tags:
       - '*'
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Plugin Version to deploy (e.g. 1.0.0)'
+        required: false
+        default: '1.0.0'
 
 jobs:
   deploy:
@@ -16,9 +19,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Determine Version
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref_type }}" = "tag" ]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+            VERSION="${VERSION#v}"
+            echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          else
+            VERSION=$(grep -i "Stable tag:" readme.txt | awk -F ':' '{print $2}' | tr -d '[[:space:]]')
+            echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          fi
+
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: lunexia-smtp-pro
+          VERSION: ${{ env.VERSION }}
